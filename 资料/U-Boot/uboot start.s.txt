@@ -1,0 +1,59 @@
+硬件相关的初始化
+ASM
+设置cpu模式为svc32管理模式 set the cpu to svc32 mode  
+关看门狗turn off the watchdog 
+屏蔽中断mask all IRQs by setting all bits in the INTMR - default
+
+SDRAM初始化
+cpu_init_crit
+
+	flush v4 I/D caches
+
+	disable MMU stuff and caches
+
+lowlevel_init
+
+	memory control configuration
+	AFTER can use memory
+	
+设置栈set up the stack
+
+C
+
+初始化时钟clock init
+	USB UPLL
+	SYSTEM MPLL
+	
+重定位relocate
+	将代码从flash中拷贝到sdram中CopyCode2Ram
+	CopyCode2Ram 判断从Nor Flash还是Nand Flash启动
+
+清bss段clear_bss
+	未初始化的全局变量和局部静态变量 具体体现为一个占位符 不占用文件空间
+
+这些操作跟平台相关，不同板子、不同cpu代码不同！
+↑第一阶段
+
+调用start_armboot
+↓第二阶段
+
+uboot启动内核
+①启动内核
+s = getenv("bootcmd")
+run_command(s, 0);
+②uboot界面
+readline(读入串口的数据)
+run_command (uboot的核心
+从flash上读出内核
+	nand read.jffs 0x30007fc0,kernel; 
+启动内核
+	bootm 0x30007fc0 
+
+支持读写flash 
+	Nor flash_init
+	Nand nand_init
+
+环境变量
+	默认
+	保存在flash上的
+start_armboot经过一系列操作之后调用main_loop
