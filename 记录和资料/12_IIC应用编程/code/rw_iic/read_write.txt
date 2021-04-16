@@ -1,0 +1,70 @@
+01 #include <stdio.h>
+02 #include <sys/ioctl.h>
+03 #include <unistd.h>
+04 #include <fcntl.h>
+05 #include <linux/i2c-dev.h>
+06 #include <linux/i2c.h>
+07  
+08 /* eeprom所对应的I2C控制器的设备节点 */ 
+09 #define EEPROM_DEVICE    	"/dev/i2c-0"	
+10 
+11 /* eeprom的I2C设备地址 */
+12 #define EEPROM_ADDR    0x50
+13 
+14 
+15 int main()
+16 {
+17 	int fd,i,ret=0;
+18 	unsigned char w_add=0x10;
+19 	
+20 	/* 将要读取的数据buf*/
+21 	unsigned char rd_buf[13] = {0x10};  
+22 	
+23 	/* 要写的数据buf，第0个元素是要操作eeprom的寄存器地址*/
+24 	unsigned char wr_buf[13] = {0};     
+25 
+26 	printf("hello,this is read_write i2c test \n");
+27 	
+28 	/* 打开eeprom对应的I2C控制器文件 */
+29 	fd =open(EEPROM_DEVICE, O_RDWR);
+30 	if (fd< 0) 
+31 	{
+32 		printf("open"EEPROM_DEVICE"failed \n");
+33 	}
+34 
+35 	/*设置eeprom的I2C设备地址*/
+36 	if (ioctl(fd,I2C_SLAVE_FORCE, EEPROM_ADDR) < 0) 
+37 	{            
+38 		printf("set slave address failed \n");
+39 	}
+40 	
+41 	/* 将要操作的寄存器首地址赋给wr_buf[0] */
+42 	wr_buf[0] = w_add;		
+43 
+44 	/* 把要写入的数据写入到后面的buf中 */
+45 	for(i=1;i<13;i++)
+46 		wr_buf[i]=i;
+47 
+48 	/* 通过write函数完成向eeprom写数据的功能 */
+49 	write(fd, wr_buf, 13);
+50 
+51 	/* 延迟一段时间 */
+52 	sleep(1);
+53 	
+54 	/*重新开始下一个操作，先写寄存器的首地址*/
+55 	write(fd, wr_buf, 1);
+56 
+57 	/* 从wr_buf[0] = w_add的寄存器地址开始读取12个字节的数据 */
+58 	ret=read(fd, rd_buf, 12);
+59 	printf("ret is %d \r\n",ret);
+60 
+61 	for(i=0;i<12;i++)
+62 	{
+63 		printf("rd_buf is :%d\n",rd_buf[i]);
+64 	}
+65 	
+66 	/* 完成操作后，关闭eeprom对应的I2C控制器的设备文件 */
+67 	close(fd);
+68 
+69 	return 0;
+70 }

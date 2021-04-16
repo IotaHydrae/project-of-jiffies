@@ -1,0 +1,9 @@
+如题，我像往常一样打开vmware虚拟机，结果无法访问网络，
+使用命令ifconfig可以发现，有线连接ens33处于关闭状态
+
+解决方法如下
+修改/etc/networking/interfaces
+添加auto ens33 iface eth0 inet
+编辑完执行 sudo /etc/init.d/networking restart 
+修改/etc/resolv.conf
+添加dns

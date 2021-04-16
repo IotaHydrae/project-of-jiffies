@@ -1,0 +1,25 @@
+nand read.jffs2 0x30007fc0;
+从NAND读出内核：
+从哪里读 : 从kernel分区
+			地址是源码里写死的
+			在配置文件board*.h中定义
+示例：
+#define MTDPARTS_DEAFULT "mtdparts=nandflash0:256k@0(bootloader),"\
+							"128k(params),"\
+							"2m(kernel)"\
+							"-(root)"
+放到哪里去? 0x30007fc0
+flash上存的内核：uImage
+				=头部struct image_header
+					in_load 加载地址
+					in_ep 入口地址
+				+
+				真正的内核
+bootm 0x30007fc0
+
+读image header，加载地址可能与输入地址不一
+移动内核到合适的地方
+启动内核do_bootm_linux
+	uboot告诉内核一些启动参数 设置启动参数
+	跳转到入口地址
+

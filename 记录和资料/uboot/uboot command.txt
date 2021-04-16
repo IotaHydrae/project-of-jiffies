@@ -1,0 +1,28 @@
+Uboot命令
+输入字符串name
+动作 执行命令
+
+存在一个命令结构体链表
+{
+	name
+	function
+}
+parse_line解析输入字符串为命令、参数
+find_cmd在命令结构体链表中查找对应命令
+
+连接器脚本uboot.lds中
+.=.;
+__u_boot_cmd_start = .;
+.u_boot_cmd :(*(.u_boot_cmd) )
+__u_boot_cmd_end = .;
+
+#define Struct_Section __attibute__ ((unused, section(".u_boot_cmd")))
+
+#define U_BOOT_CMD(name,maxargs,rep,cmd,usage,help) \
+cmd_tbl_t __u_boot_cmd_##name Struct_Section = {#name, maxargs, rep, cmd,usage,help}
+
+cmd_tbl_t 即命令结构体，包含 name maxargs repetable cmd usage help
+
+实验：增加一个hello命令，打印hello world
+int do_hello(cmd_tbl_t *cmdtp, int flag, int argc, char *argv[]);
+创建一个U_BOOT_CMD
