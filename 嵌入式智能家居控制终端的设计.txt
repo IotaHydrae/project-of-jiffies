@@ -1,2 +1,0 @@
-嵌入式智能家居控制终端的设计
-Design of embedded smart home control terminal

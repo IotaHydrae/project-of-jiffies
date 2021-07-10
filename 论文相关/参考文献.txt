@@ -1,0 +1,28 @@
+	参考文献
+
+[]  韦东山. 嵌入式Linux应用开发完全手册[M]. 人民邮电出版社，2008
+[]  
+[]  Michael Kerrisk. Linux/UNIX系统编程手册[M](上/下册). 人民邮电出版社，2014
+[]  Robert Love. Linux内核设计与实现[M]. 
+[]  Light and Versatile Graphics Library, "Quick overview,"
+    lvgl.io LVGL LLC. Apr 17, 2021.[Online]. Available: 
+    https://docs.lvgl.io/v7/en/html/get-started/quick-overview.html
+	
+[]  Light and Versatile Graphics Library, "Porting,"
+    lvgl.io LVGL LLC. Apr 17, 2021.[Online]. Available: 
+    https://docs.lvgl.io/v7/en/html/porting/index.html
+
+[]  Allwiner Technology, "F1C100s Datasheet," 
+    F1C600 datasheet, Nov. 2015[Revised Nov.10 2015]
+	
+[]  Allwiner Technology, "F1C600 User Manual," 
+    F1C600 datasheet, Nov. 2015[Revised Nov.10 2015]
+
+[]  SanDisk Corporation, "iNAND Standard and Ultra 
+    e.MMC 4.41 I/F," SDIN5D2-4G-LT datasheet, Mar. 2011[Revised Dec.
+    2011]
+	
+[]  IEEE, "How to Cite References: 
+    IEEE Documentation Style," IEEE Citation Guidelines,
+	ieee-dataport.org. Available:
+	https://ieee-dataport.org/sites/default/files/analysis/27/IEEE%20Citation%20Guidelines.pdf
