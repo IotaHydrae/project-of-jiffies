@@ -1,0 +1,74 @@
+mount -t nfs -o nolock,vers=3,port=2049,mountport=9999 192.168.3.144:/home/book/nfs_rootfs /mnt
+mount -t nfs -o nolock,vers=3,port=2049,mountport=9999 192.168.42.128:/home/book/nfs_rootfs /mnt
+
+/home/book/100ask_imx6ull-sdk/ToolChain/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin/../arm-linux-gnueabihf/libc/usr/include
+/home/book/100ask_imx6ull-sdk/ToolChain/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin/../arm-linux-gnueabihf/libc/usr/lib/
+
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabihf-
+export PATH=$PATH:/home/book/100ask_imx6ull-sdk/ToolChain/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin
+
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+export PATH=$PATH:/opt/gcc-linaro-7.2.1-2017.11-x86_64_arm-linux-gnueabi/bin
+
+export ARCH=arm
+export CROSS_COMPILE=arm-none-linux-gnueabi-
+export PATH=$PATH:/usr/local/arm/4.3.2/bin
+
+export ARCH=arm
+export CROSS_COMPILE=arm-linux-gnueabi-
+export PATH=$PATH:/usr/arm-linux-gnueabi/bin
+
+export PATH=$PATH:/home/book/100ask_imx6ull-qemu/ToolChain/gcc-linaro-6.2.1-2016.11-x86_64_arm-linux-gnueabihf/bin
+# s3c2440 CROSS_COMPILE
+export PATH=$PATH:/usr/local/arm/4.3.2/bin
+export PATH=$PATH:/opt/FriendlyARM/toolschain/4.4.3/bin
+
+/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+
+console=ttySAC0 root=/dev/nfs
+nfsroot=10.101.24.164:/opt/FriendlyARM/mini2440/rootfs_qtopia_qt4
+ip=192.168.137.166:10.101.24.164:192.168.137.1:255.255.255.0:sbc2440.arm9.net:eth0:off
+
+
+mount -t nfs -o nolock,vers=3,port=2049,mountport=9999 123.56.170.136:/home/book/nfs_rootfs /mnt
+mount -t nfs -o nolock,vers=3 192.168.3.160:/home/pi/linux_apps /mnt
+mount -t nfs -o nolock,vers=3 123.56.170.136:/home/book/nfs_rootfs /mnt
+
+mount -t nfs -o nolock,vers=3,port=2049,mountport=9999 192.168.3.144:/home/book/nfs_rootfs /mnt
+mount -t nfs -o nolock,vers=3,port=2049,mountport=9999 192.168.3.130:/home/book/nfs_rootfs /mnt
+
+git config --global http.proxy 'socks5://127.0.0.1:19181' && git config --global https.proxy 'socks5://127.0.0.1:19181'
+git config --global --unset http.proxy && git config --global --unset https.proxy
+
+git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
+git config --global https.https://github.com.proxy socks5://127.0.0.1:10808
+
+git config --global http.https://github.com.proxy socks5://192.168.3.144:10808
+git config --global https.https://github.com.proxy socks5://192.168.3.144:10808
+
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+
+git config --global --unset http.https://github.com.proxy
+git config --global --unset https.https://github.com.proxy
+
+电脑开机
+开虚拟机
+配置工具链
+开visual studio
+开vscode
+网页打开官方文档
+（挂代理）
+开发板上电
+配置开发板挂载
+开mobxterm
+开filezlia
+
+vscode中编写代码
+visual studio中运行测试
+filezlia上传虚拟机
+编译拷贝
+开发板执行程序
+19246180
